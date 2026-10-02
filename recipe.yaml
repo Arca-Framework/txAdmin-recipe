@@ -32,6 +32,11 @@ tasks:
     src: ./tmp/ox_lib.zip
     dest: ./resources/[standalone]
 
+  # bob74_ipl (loads GTA Online interiors and fixes holes in the default map)
+  - action: download_github
+    src: https://github.com/Bob74/bob74_ipl
+    dest: ./resources/[standalone]/bob74_ipl
+
   # illenium-appearance (Arca fork with native Arca support)
   - action: download_github
     src: https://github.com/Arca-Framework/illenium-appearance
