@@ -10,6 +10,9 @@ tasks:
   # Default CFX resources (chat, spawnmanager, sessionmanager, etc.)
   - action: download_github
     src: https://github.com/citizenfx/cfx-server-data
+    # pinned to the last commit that still ships chat, sessionmanager and hardcap
+    # (later commits removed them from this repo)
+    ref: e265cb251c88260533c847d4a1a2838c7d828a66
     subpath: resources
     dest: ./resources
 
