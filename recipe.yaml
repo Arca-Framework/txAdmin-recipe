@@ -29,13 +29,10 @@ tasks:
     src: ./tmp/ox_lib.zip
     dest: ./resources/[standalone]
 
-  # illenium-appearance
-  - action: download_file
-    path: ./tmp/illenium-appearance.zip
-    url: https://github.com/iLLeniumStudios/illenium-appearance/releases/latest/download/illenium-appearance.zip
-  - action: unzip
-    src: ./tmp/illenium-appearance.zip
-    dest: ./resources/[standalone]
+  # illenium-appearance (Arca fork with native Arca support)
+  - action: download_github
+    src: https://github.com/Arca-Framework/illenium-appearance
+    dest: ./resources/[standalone]/illenium-appearance
 
   # Arca
   - action: download_github
@@ -71,6 +68,12 @@ tasks:
   - action: connect_database
   - action: query_database
     file: ./resources/[arca]/arca_core/sql/arca.sql
+  - action: query_database
+    file: ./resources/[standalone]/illenium-appearance/sql/player_outfits.sql
+  - action: query_database
+    file: ./resources/[standalone]/illenium-appearance/sql/player_outfit_codes.sql
+  - action: query_database
+    file: ./resources/[standalone]/illenium-appearance/sql/management_outfits.sql
 
   # Cleanup
   - action: remove_path
@@ -90,7 +93,7 @@ tasks:
       sets sv_projectName "Arca"
       sets sv_projectDesc "Built on the Arca framework"
       sets tags "arca, roleplay"
-      sv_enforceGameBuild 3258
+      sv_enforceGameBuild 3407
 
       set mysql_connection_string "{{dbConnectionString}}"
       set mysql_ui true
@@ -102,8 +105,8 @@ tasks:
       ensure sessionmanager
       ensure hardcap
 
-      ## Core dependencies (order matters: arca_core must start before
-      ## illenium-appearance so it detects the qb-core bridge)
+      ## Core dependencies (order matters: arca_core must start before the
+      ## Arca illenium-appearance fork so it detects Arca)
       ensure oxmysql
       ensure ox_lib
       ensure arca_core
