@@ -57,6 +57,9 @@ tasks:
   #   src: https://github.com/Arca-Framework/arca_spawn
   #   dest: ./resources/[arca]/arca_spawn
   - action: download_github
+    src: https://github.com/Arca-Framework/arca_inventory
+    dest: ./resources/[arca]/arca_inventory
+  - action: download_github
     src: https://github.com/Arca-Framework/arca_hud
     dest: ./resources/[arca]/arca_hud
   - action: download_github
@@ -68,14 +71,13 @@ tasks:
   # - action: download_github
   #   src: https://github.com/Arca-Framework/arca_identity
   #   dest: ./resources/[arca]/arca_identity
-  # - action: download_github
-  #   src: https://github.com/Arca-Framework/arca_inventory
-  #   dest: ./resources/[arca]/arca_inventory
 
   # Database
   - action: connect_database
   - action: query_database
     file: ./resources/[arca]/arca_core/sql/arca.sql
+  - action: query_database
+    file: ./resources/[arca]/arca_inventory/sql/inventory.sql
   - action: query_database
     file: ./resources/[standalone]/illenium-appearance/sql/player_outfits.sql
   - action: query_database
