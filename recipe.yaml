@@ -4,7 +4,7 @@ $onesync: on
 name: Arca Framework
 version: 0.1.0
 author: Arca
-description: Arca framework (arca_core, arca_target, arca_character) with oxmysql.
+description: Arca framework (core, target, character, spawn, inventory, hud, bank, health, phone, admin, interface and more) with oxmysql.
 
 tasks:
   # Default CFX resources (chat, spawnmanager, sessionmanager, etc.)
@@ -52,10 +52,9 @@ tasks:
   - action: download_github
     src: https://github.com/Arca-Framework/arca_character
     dest: ./resources/[arca]/arca_character
-  # Uncomment as these get built (and add their ensure lines below):
-  # - action: download_github
-  #   src: https://github.com/Arca-Framework/arca_spawn
-  #   dest: ./resources/[arca]/arca_spawn
+  - action: download_github
+    src: https://github.com/Arca-Framework/arca_spawn
+    dest: ./resources/[arca]/arca_spawn
   - action: download_github
     src: https://github.com/Arca-Framework/arca_inventory
     dest: ./resources/[arca]/arca_inventory
@@ -65,9 +64,25 @@ tasks:
   - action: download_github
     src: https://github.com/Arca-Framework/arca_loadingscreen
     dest: ./resources/[arca]/arca_loadingscreen
-  # - action: download_github
-  #   src: https://github.com/Arca-Framework/arca_phone
-  #   dest: ./resources/[arca]/arca_phone
+  - action: download_github
+    src: https://github.com/Arca-Framework/arca_admin
+    dest: ./resources/[arca]/arca_admin
+  - action: download_github
+    src: https://github.com/Arca-Framework/arca_phone
+    dest: ./resources/[arca]/arca_phone
+  - action: download_github
+    src: https://github.com/Arca-Framework/arca_bank
+    dest: ./resources/[arca]/arca_bank
+  - action: download_github
+    src: https://github.com/Arca-Framework/arca_health
+    dest: ./resources/[arca]/arca_health
+  - action: download_github
+    src: https://github.com/Arca-Framework/arca_chattheme
+    dest: ./resources/[arca]/arca_chattheme
+  - action: download_github
+    src: https://github.com/Arca-Framework/arca_interface
+    dest: ./resources/[arca]/arca_interface
+  # Uncomment once built:
   # - action: download_github
   #   src: https://github.com/Arca-Framework/arca_identity
   #   dest: ./resources/[arca]/arca_identity
@@ -132,4 +147,6 @@ tasks:
       add_ace resource.arca_core command.remove_ace allow
       add_ace resource.arca_core command.add_principal allow
       add_ace resource.arca_core command.remove_principal allow
+      # arca_admin's resource manager (start / stop / restart from the menu)
+      add_ace resource.arca_admin command allow
       {{addPrincipalsMaster}}
